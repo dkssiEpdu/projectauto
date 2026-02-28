@@ -1,13 +1,41 @@
+/* Theme variables */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #333333;
+    --header-text: #ffffff;
+    --footer-bg: #f2f2f2;
+    --footer-text: #333333;
+    --card-border: #cccccc;
+    --btn-bg: #333333;
+    --btn-text: #ffffff;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f2f2f2;
+    --header-bg: #000000;
+    --header-text: #ffffff;
+    --footer-bg: #000000;
+    --footer-text: #ffffff;
+    --card-border: #444444;
+    --btn-bg: #ffffff;
+    --btn-text: #333333;
+}
+
 /* General styles */
 body {
     font-family: sans-serif;
     margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Header */
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     padding: 1rem;
 }
 
@@ -18,7 +46,7 @@ nav {
 }
 
 .logo a {
-    color: #fff;
+    color: var(--header-text);
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -28,24 +56,39 @@ ul {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 li a {
-    color: #fff;
+    color: var(--header-text);
     text-decoration: none;
     padding: 1rem;
 }
 
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--header-text);
+    color: var(--header-text);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* Hero section */
 .hero {
-    background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
     color: #fff;
     text-align: center;
     padding: 4rem 0;
 }
-
 
 .hero-content h1 {
     font-size: 3rem;
@@ -73,15 +116,16 @@ li a {
 
 /* Call to action section */
 .cta {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     text-align: center;
     padding: 2rem 0;
 }
 
 /* Footer */
 footer {
-    background-color: #f2f2f2;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 1rem;
     text-align: center;
 }

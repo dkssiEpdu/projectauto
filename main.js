@@ -6,9 +6,12 @@ class CarListing extends HTMLElement {
         template.innerHTML = `
             <style>
                 .car-listing {
-                    border: 1px solid #ccc;
+                    border: 1px solid var(--card-border, #ccc);
                     border-radius: 5px;
                     padding: 1rem;
+                    background-color: var(--bg-color, #fff);
+                    color: var(--text-color, #333);
+                    transition: all 0.3s;
                 }
 
                 .car-listing img {
@@ -27,13 +30,14 @@ class CarListing extends HTMLElement {
                 }
 
                 .car-listing .btn {
-                    background-color: #333;
-                    color: #fff;
+                    background-color: var(--btn-bg, #333);
+                    color: var(--btn-text, #fff);
                     padding: 0.5rem 1rem;
                     text-decoration: none;
                     border-radius: 5px;
                     display: inline-block;
                     margin-top: 1rem;
+                    transition: background-color 0.3s;
                 }
             </style>
             <div class="car-listing">
@@ -48,6 +52,29 @@ class CarListing extends HTMLElement {
 }
 
 customElements.define('car-listing', CarListing);
+
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.textContent = 'Light Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = 'Light Mode';
+    } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = 'Dark Mode';
+    }
+});
 
 const carListings = [
     {
