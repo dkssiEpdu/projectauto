@@ -179,19 +179,19 @@ const carListings = [
         name: 'Tesla Model 3',
         price: '₩54,000,000',
         description: '완전 자율 주행(FSD) 옵션 포함, 1인 신조 무사고 차량입니다. 화이트 프리미엄 인테리어와 유리막 코팅으로 최상의 컨디션을 유지하고 있습니다.',
-        image: 'https://images.unsplash.com/photo-1629904991443-3e2a39f65839?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1536700503339-1e4b06520771?q=80&w=2070&auto=format&fit=crop',
     },
     {
         name: 'Ford Mustang GT',
         price: '₩48,000,000',
         description: 'V8 5.0L 엔진의 압도적인 성능. 정식 출고 차량이며 배기 튜닝(구조변경 완료)으로 머슬카 특유의 감성을 극대화했습니다.',
-        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?q=80&w=2070&auto=format&fit=crop',
     },
     {
         name: 'Chevrolet Corvette',
         price: '₩82,000,000',
         description: '미드쉽 엔진의 완벽한 밸런스를 자랑하는 C8 모델입니다. 서킷 주행 이력 없으며 실내외 신차급 컨디션을 보증합니다.',
-        image: 'https://images.unsplash.com/photo-1610472482329-a77480740924?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop',
     },
     {
         name: 'Porsche 911 Carrera',
@@ -203,13 +203,13 @@ const carListings = [
         name: 'BMW M4 Competition',
         price: '₩95,000,000',
         description: 'M 전용 아일 오브 맨 그린 컬러와 카본 패키지가 적용된 컴페티션 모델입니다. 고급유 관리 및 무사고를 보장합니다.',
-        image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop',
     },
     {
         name: 'Audi R8 V10 Performance',
         price: '₩180,000,000',
         description: '자연흡기 V10 엔진의 마지막 세대. 전체 PPF 시공으로 외관 보호가 완벽하며 전용 서비스 센터에서만 관리된 차량입니다.',
-        image: 'https://images.unsplash.com/photo-1606152424101-ad2f9a287bd6?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1603584173870-7f3ca99a4741?q=80&w=2070&auto=format&fit=crop',
     },
 ];
 
