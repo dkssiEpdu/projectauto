@@ -130,6 +130,17 @@ const scrollToListings = (e) => {
 if (exploreBtn) exploreBtn.addEventListener('click', scrollToListings);
 if (viewAllBtn) viewAllBtn.addEventListener('click', scrollToListings);
 
+// Hero Slider Auto-play
+const sliderItems = document.querySelectorAll('.slider-item');
+if (sliderItems.length > 0) {
+    let currentSlide = 0;
+    setInterval(() => {
+        sliderItems[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % sliderItems.length;
+        sliderItems[currentSlide].classList.add('active');
+    }, 5000);
+}
+
 const carListings = [
     {
         name: 'Tesla Model 3',
@@ -165,10 +176,12 @@ const carListings = [
 
 const carListingsContainer = document.querySelector('.car-listings');
 
-carListings.forEach(car => {
-    const carListing = document.createElement('car-listing');
-    carListing.setAttribute('name', car.name);
-    carListing.setAttribute('price', car.price);
-    carListing.setAttribute('image', car.image);
-    carListingsContainer.appendChild(carListing);
-});
+if (carListingsContainer) {
+    carListings.forEach(car => {
+        const carListing = document.createElement('car-listing');
+        carListing.setAttribute('name', car.name);
+        carListing.setAttribute('price', car.price);
+        carListing.setAttribute('image', car.image);
+        carListingsContainer.appendChild(carListing);
+    });
+}
