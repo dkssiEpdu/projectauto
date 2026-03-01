@@ -209,7 +209,7 @@ const carListings = [
         name: 'Audi R8 V10 Performance',
         price: '₩180,000,000',
         description: '자연흡기 V10 엔진의 마지막 세대. 전체 PPF 시공으로 외관 보호가 완벽하며 전용 서비스 센터에서만 관리된 차량입니다.',
-        image: 'https://images.unsplash.com/photo-1603584173870-7f3ca99a4741?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop',
     },
 ];
 
