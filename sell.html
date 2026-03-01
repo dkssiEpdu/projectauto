@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 차 팔기 | Project-Auto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            border: 2px solid var(--border-color);
+            background-color: var(--surface);
+        }
+        .form-container h1 {
+            font-size: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: -0.04em;
+        }
+        .form-container p {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 0;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background-color: rgba(0,0,0,0.05);
+        }
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            background-color: rgba(255,255,255,0.05);
+        }
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .form-group input[type="file"] {
+            padding: 10px 0;
+        }
+        .submit-btn {
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">project-auto</a>
+            </div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="sell.html">내 차 팔기</a></li>
+                <li><a href="listings.html">맞춤 매물</a></li>
+                <li><a href="#">금융 혜택</a></li>
+            </ul>
+            <button id="theme-toggle">다크 모드 켜기</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h1>내 차 팔기</h1>
+            <p>당신의 소중한 차량 정보를 입력해주세요. 프로젝트 오토가 가장 공정한 가격을 제안해드립니다.</p>
+            
+            <form action="https://formspree.io/f/xpqjepjw" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="car-model">차량 모델명</label>
+                    <input type="text" id="car-model" name="car_model" placeholder="예: 현대 아반떼 CN7" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="year">연식</label>
+                        <input type="number" id="year" name="year" placeholder="예: 2023" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mileage">주행거리 (km)</label>
+                        <input type="number" id="mileage" name="mileage" placeholder="예: 15000" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">희망 판매 가격 (만원)</label>
+                    <input type="number" id="price" name="price" placeholder="예: 2500" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">차량 상세 설명</label>
+                    <textarea id="description" name="description" placeholder="차량의 상태, 사고 유무, 추가 옵션 등을 자유롭게 적어주세요."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="car-image">차량 사진 업로드</label>
+                    <input type="file" id="car-image" name="car_image" accept="image/*">
+                </div>
+
+                <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border-color); opacity: 0.3;">
+
+                <h2 style="font-size: 20px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px;">연락처 정보</h2>
+                
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="email">이메일 주소</label>
+                        <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">전화번호</label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn submit-btn">판매 신청하기</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Project-Auto. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.6;">중고차 그 이상의 감동, 프로젝트 오토</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
