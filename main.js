@@ -1,9 +1,20 @@
 class CarListing extends HTMLElement {
     constructor() {
         super();
-        const shadow = this.attachShadow({ mode: 'open' });
-        const template = document.createElement('template');
-        template.innerHTML = `
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
+        const name = this.getAttribute('name') || 'Unknown Car';
+        const price = this.getAttribute('price') || 'Contact for price';
+        const description = this.getAttribute('description') || 'No description available.';
+        const image = this.getAttribute('image') || '';
+
+        this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     display: block;
@@ -100,14 +111,13 @@ class CarListing extends HTMLElement {
                 }
             </style>
             <div class="car-listing">
-                <img src="${this.getAttribute('image')}" alt="${this.getAttribute('name')}">
-                <h3>${this.getAttribute('name')}</h3>
-                <span class="price">${this.getAttribute('price')}</span>
-                <p class="description">${this.getAttribute('description')}</p>
+                <img src="${image}" alt="${name}">
+                <h3>${name}</h3>
+                <span class="price">${price}</span>
+                <p class="description">${description}</p>
                 <a href="#" class="btn">VIEW DETAILS</a>
             </div>
         `;
-        shadow.appendChild(template.content.cloneNode(true));
     }
 }
 
