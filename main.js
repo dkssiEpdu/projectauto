@@ -9,6 +9,7 @@ class CarListing extends HTMLElement {
     }
 
     render() {
+        const id = this.getAttribute('car-id') || '0';
         const name = this.getAttribute('name') || 'Unknown Car';
         const price = this.getAttribute('price') || 'Contact for price';
         const description = this.getAttribute('description') || 'No description available.';
@@ -104,18 +105,19 @@ class CarListing extends HTMLElement {
                     border: 2px solid var(--border-color);
                     transition: all 0.2s ease;
                     letter-spacing: 0.1em;
+                    display: block;
                 }
 
                 .car-listing .btn:hover {
                     opacity: 0.9;
                 }
             </style>
-            <div class="car-listing">
+            <div class="car-listing" onclick="window.location.href='details.html?id=${id}'">
                 <img src="${image}" alt="${name}">
                 <h3>${name}</h3>
                 <span class="price">${price}</span>
                 <p class="description">${description}</p>
-                <a href="#" class="btn">VIEW DETAILS</a>
+                <a href="details.html?id=${id}" class="btn">VIEW DETAILS</a>
             </div>
         `;
     }
@@ -127,26 +129,27 @@ customElements.define('car-listing', CarListing);
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
-    themeToggle.textContent = '다크 모드 끄기';
-} else {
-    themeToggle.textContent = '다크 모드 켜기';
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
+if (themeToggle) {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
         themeToggle.textContent = '다크 모드 끄기';
     } else {
-        localStorage.setItem('theme', 'light');
         themeToggle.textContent = '다크 모드 켜기';
     }
-});
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            themeToggle.textContent = '다크 모드 끄기';
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeToggle.textContent = '다크 모드 켜기';
+        }
+    });
+}
 
 // Smooth scroll for exploration buttons
 const exploreBtn = document.getElementById('explore-btn');
@@ -176,52 +179,111 @@ if (sliderItems.length > 0) {
 
 const carListings = [
     {
+        id: 0,
         name: 'Tesla Model 3',
         price: '₩54,000,000',
         description: '완전 자율 주행(FSD) 옵션 포함, 1인 신조 무사고 차량입니다. 화이트 프리미엄 인테리어와 유리막 코팅으로 최상의 컨디션을 유지하고 있습니다.',
         image: 'https://images.unsplash.com/photo-1536700503339-1e4b06520771?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2023', mileage: '12,000km', fuel: 'Electric', location: 'Seoul' }
     },
     {
+        id: 1,
         name: 'Ford Mustang GT',
         price: '₩48,000,000',
         description: 'V8 5.0L 엔진의 압도적인 성능. 정식 출고 차량이며 배기 튜닝(구조변경 완료)으로 머슬카 특유의 감성을 극대화했습니다.',
         image: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2022', mileage: '25,000km', fuel: 'Gasoline', location: 'Gyeonggi' }
     },
     {
+        id: 2,
         name: 'Chevrolet Corvette',
         price: '₩82,000,000',
         description: '미드쉽 엔진의 완벽한 밸런스를 자랑하는 C8 모델입니다. 서킷 주행 이력 없으며 실내외 신차급 컨디션을 보증합니다.',
         image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2021', mileage: '8,000km', fuel: 'Gasoline', location: 'Incheon' }
     },
     {
+        id: 3,
         name: 'Porsche 911 Carrera',
         price: '₩125,000,000',
         description: '포르쉐의 정수, 911 카레라입니다. 포르쉐 센터 정기 점검 완료 및 미쉐린 타이어 신품 교체로 즉시 주행 가능합니다.',
         image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2022', mileage: '15,000km', fuel: 'Gasoline', location: 'Seoul' }
     },
     {
+        id: 4,
         name: 'BMW M4 Competition',
         price: '₩95,000,000',
         description: 'M 전용 아일 오브 맨 그린 컬러와 카본 패키지가 적용된 컴페티션 모델입니다. 고급유 관리 및 무사고를 보장합니다.',
         image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2023', mileage: '5,000km', fuel: 'Gasoline', location: 'Busan' }
     },
     {
+        id: 5,
         name: 'Audi R8 V10 Performance',
         price: '₩180,000,000',
         description: '자연흡기 V10 엔진의 마지막 세대. 전체 PPF 시공으로 외관 보호가 완벽하며 전용 서비스 센터에서만 관리된 차량입니다.',
         image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop',
+        specs: { year: '2021', mileage: '10,000km', fuel: 'Gasoline', location: 'Seoul' }
     },
 ];
 
+// Main Listing Rendering
 const carListingsContainer = document.querySelector('.car-listings');
-
 if (carListingsContainer) {
     carListings.forEach(car => {
         const carListing = document.createElement('car-listing');
+        carListing.setAttribute('car-id', car.id);
         carListing.setAttribute('name', car.name);
         carListing.setAttribute('price', car.price);
         carListing.setAttribute('description', car.description);
         carListing.setAttribute('image', car.image);
         carListingsContainer.appendChild(carListing);
     });
+}
+
+// Details Page Rendering
+const detailsContent = document.getElementById('details-content');
+if (detailsContent) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const carId = parseInt(urlParams.get('id'));
+    const car = carListings.find(c => c.id === carId);
+
+    if (car) {
+        detailsContent.innerHTML = `
+            <div class="details-container">
+                <div class="details-image">
+                    <img src="${car.image}" alt="${car.name}">
+                </div>
+                <div class="details-info">
+                    <h1>${car.name}</h1>
+                    <span class="price">${car.price}</span>
+                    <p class="description">${car.description}</p>
+                    
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">연식</div>
+                            <div class="spec-value">${car.specs.year}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">주행거리</div>
+                            <div class="spec-value">${car.specs.mileage}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">연료</div>
+                            <div class="spec-value">${car.specs.fuel}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">지역</div>
+                            <div class="spec-value">${car.specs.location}</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn" style="width: 100%; text-align: center;">구매 상담 신청하기</a>
+                </div>
+            </div>
+        `;
+    } else {
+        detailsContent.innerHTML = `<div style="text-align: center; padding: 100px;"><h2>매물을 찾을 수 없습니다.</h2><br><a href="listings.html" class="btn">목록으로 돌아가기</a></div>`;
+    }
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매물 상세 정보 | Project-Auto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        .details-container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .details-image img {
+            width: 100%;
+            height: auto;
+            border: 2px solid var(--border-color);
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+        .details-image img:hover {
+            filter: grayscale(0%);
+        }
+        .details-info h1 {
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: -0.04em;
+        }
+        .details-info .price {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--border-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .details-info .description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            font-weight: 500;
+        }
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .spec-item {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+        }
+        .spec-label {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .spec-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        @media (max-width: 768px) {
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+            .details-info h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">project-auto</a>
+            </div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="#">내 차 팔기</a></li>
+                <li><a href="listings.html">맞춤 매물</a></li>
+                <li><a href="#">금융 혜택</a></li>
+            </ul>
+            <button id="theme-toggle">다크 모드 켜기</button>
+        </nav>
+    </header>
+
+    <main id="details-content">
+        <!-- Details will be injected by JavaScript -->
+        <div style="text-align: center; padding: 100px;">
+            <h2>매물 정보를 불러오는 중입니다...</h2>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Project-Auto. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.6;">중고차 그 이상의 감동, 프로젝트 오토</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
