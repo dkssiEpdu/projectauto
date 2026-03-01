@@ -10,11 +10,11 @@ class CarListing extends HTMLElement {
                 }
                 .car-listing {
                     background-color: var(--surface, #fff);
-                    border-radius: 20px;
+                    border-radius: 0;
                     padding: 24px;
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                     cursor: pointer;
-                    border: 1px solid var(--border-color, #e5e8eb);
+                    border: 2px solid var(--border-color, #000);
                     height: 100%;
                     display: flex;
                     flex-direction: column;
@@ -22,66 +22,80 @@ class CarListing extends HTMLElement {
 
                 .car-listing:hover {
                     transform: translateY(-8px);
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                    background-color: var(--text-primary);
+                }
+
+                .car-listing:hover h3,
+                .car-listing:hover .price,
+                .car-listing:hover .description {
+                    color: var(--bg-color);
+                }
+
+                .car-listing:hover .btn {
+                    background-color: var(--bg-color);
+                    color: var(--text-primary);
                 }
 
                 .car-listing img {
                     width: 100%;
-                    height: 180px;
+                    height: 200px;
                     object-fit: cover;
-                    border-radius: 12px;
-                    margin-bottom: 20px;
+                    border-radius: 0;
+                    margin-bottom: 24px;
+                    border: 1px solid var(--border-color);
+                    filter: grayscale(100%);
                 }
 
                 .car-listing h3 {
-                    margin: 0 0 8px 0;
-                    font-size: 20px;
-                    font-weight: 700;
-                    color: var(--text-primary, #191f28);
+                    margin: 0 0 12px 0;
+                    font-size: 22px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    color: var(--text-primary, #000);
                 }
 
                 .car-listing .price {
-                    font-size: 18px;
-                    font-weight: 600;
-                    color: var(--primary, #3182f6);
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--text-primary, #000);
                     margin-bottom: 16px;
+                    display: block;
+                    border-top: 1px solid var(--border-color);
+                    padding-top: 12px;
                 }
 
                 .car-listing .description {
                     font-size: 15px;
-                    color: var(--text-secondary, #4e5968);
+                    color: var(--text-secondary, #666);
                     margin-bottom: 24px;
                     flex-grow: 1;
                 }
 
                 .car-listing .btn {
-                    background-color: #f2f4f6;
-                    color: #4e5968;
-                    padding: 12px;
+                    background-color: var(--text-primary);
+                    color: var(--bg-color);
+                    padding: 14px;
                     text-decoration: none;
-                    border-radius: 10px;
-                    font-weight: 600;
+                    border-radius: 0;
+                    font-weight: 800;
                     font-size: 14px;
                     text-align: center;
+                    text-transform: uppercase;
+                    border: 1px solid var(--border-color);
                     transition: all 0.2s ease;
                 }
 
-                :host-context(.dark-mode) .car-listing .btn {
-                    background-color: #2c2d2e;
-                    color: #adb5bd;
-                }
-
                 .car-listing .btn:hover {
-                    background-color: var(--primary, #3182f6);
-                    color: #ffffff;
+                    opacity: 0.9;
                 }
             </style>
             <div class="car-listing">
                 <img src="${this.getAttribute('image')}" alt="${this.getAttribute('name')}">
                 <h3>${this.getAttribute('name')}</h3>
-                <p class="price">${this.getAttribute('price')}</p>
-                <p class="description">Premium condition, fully inspected, and ready for a new owner.</p>
-                <a href="#" class="btn">자세히 보기</a>
+                <span class="price">${this.getAttribute('price')}</span>
+                <p class="description">PREMIUM CONDITION. FULLY INSPECTED. READY FOR DISPATCH.</p>
+                <a href="#" class="btn">VIEW SPEC</a>
             </div>
         `;
         shadow.appendChild(template.content.cloneNode(true));
