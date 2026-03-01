@@ -115,6 +115,18 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
+// Smooth scroll for exploration buttons
+const exploreBtn = document.getElementById('explore-btn');
+const viewAllBtn = document.getElementById('view-all-btn');
+
+const scrollToListings = (e) => {
+    e.preventDefault();
+    document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
+};
+
+if (exploreBtn) exploreBtn.addEventListener('click', scrollToListings);
+if (viewAllBtn) viewAllBtn.addEventListener('click', scrollToListings);
+
 const carListings = [
     {
         name: 'Tesla Model 3',
