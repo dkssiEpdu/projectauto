@@ -57,11 +57,29 @@ nav {
     align-items: center;
 }
 
+.logo {
+    background-color: #191f28; /* Dark background in light mode */
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
 .logo a {
-    color: var(--primary);
+    color: #ffffff; /* White text in light mode */
     text-decoration: none;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+}
+
+body.dark-mode .logo {
+    background-color: #ffffff; /* Light background in dark mode */
+}
+
+body.dark-mode .logo a {
+    color: #000000; /* Black text in dark mode */
 }
 
 ul {
