@@ -115,13 +115,16 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// Smooth scroll for exploration buttons
+// Smooth scroll for exploration buttons (only if element exists on current page)
 const exploreBtn = document.getElementById('explore-btn');
 const viewAllBtn = document.getElementById('view-all-btn');
 
 const scrollToListings = (e) => {
-    e.preventDefault();
-    document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
+    const listingsSection = document.getElementById('listings');
+    if (listingsSection) {
+        e.preventDefault();
+        listingsSection.scrollIntoView({ behavior: 'smooth' });
+    }
 };
 
 if (exploreBtn) exploreBtn.addEventListener('click', scrollToListings);
